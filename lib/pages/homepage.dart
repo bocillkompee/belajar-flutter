@@ -8,29 +8,56 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  int selectedIndex = 0;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: const Text("Home"),
       ),
+
       body: ListView(
         children: [
-          IniUntukCostum(nama: "Arif", job: "fullstack"),
-          IniUntukCostum(nama: "Arif", job: "UI/UX"),
-          IniUntukCostum(nama: "Arif", job: "QA TESTER"),
-          IniUntukCostum(nama: "Arif", job: "fullstack"),
-          ListTile(
-            title: const Text("Arip"),
-            subtitle: const Text("Fullstack"),
-            leading: const Icon(Icons.person),
-            trailing: const Icon(Icons.menu),
+          IniUntukCostum(
+            nama: "Arif",
+            job: "Fullstack",
           ),
-          ListTile(
-            title: const Text("Arip"),
-            subtitle: const Text("Fullstack"),
-            leading: const Icon(Icons.person),
-            trailing: const Icon(Icons.menu),
+          IniUntukCostum(
+            nama: "Arif",
+            job: "UI/UX",
+          ),
+          IniUntukCostum(
+            nama: "Arif",
+            job: "QA TESTER",
+          ),
+          IniUntukCostum(
+            nama: "Arif",
+            job: "Fullstack",
+          ),
+        ],
+      ),
+
+      // NAVBAR DI BAWAH
+      bottomNavigationBar: BottomNavigationBar(
+        currentIndex: selectedIndex,
+        onTap: (index) {
+          setState(() {
+            selectedIndex = index;
+          });
+        },
+        items: const [
+          BottomNavigationBarItem(
+            icon: Icon(Icons.home),
+            label: "Home",
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.person),
+            label: "Profile",
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.settings),
+            label: "Settings",
           ),
         ],
       ),
@@ -38,6 +65,7 @@ class _HomePageState extends State<HomePage> {
   }
 }
 
+// CUSTOM LIST TILE
 class IniUntukCostum extends StatelessWidget {
   final String nama;
   final String? job;
@@ -51,8 +79,8 @@ class IniUntukCostum extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ListTile(
-      title: Text("Arip"),
-      subtitle: Text (job == null ? "": job.toString()),
+      title: Text(nama),
+      subtitle: Text(job ?? ""),
       leading: const Icon(Icons.person),
       trailing: const Icon(Icons.menu),
     );

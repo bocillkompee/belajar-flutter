@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:project_kk3/pages/register.dart';
+import 'package:project_kk3/pages/homepage.dart';
 
 void main() {
   runApp(const MyApp());
@@ -184,7 +185,7 @@ class _LoginFormState extends State<LoginForm> {
               Navigator.push(
               context,
               MaterialPageRoute(
-                builder: (context) => const RegisterPage(),
+                builder: (context) => const HomePage(),
               ),
               );
             },
@@ -212,10 +213,28 @@ class _LoginFormState extends State<LoginForm> {
                   color: Color.fromARGB(133, 88, 88, 88),
                 ),
               ),
-            ],
+              TextButton(
+                 onPressed: () {
+              Navigator.push(
+                context,
+              MaterialPageRoute(
+                builder: (context) => const RegisterPage(),
+             ),
+          );
+       },
+      child: const Text(
+            "Sign Up",
+            style: TextStyle(
+            fontSize: 14,
+            fontWeight: FontWeight.w600,
+            color: Color.fromRGBO(0, 40, 73, 1),
+            ),
           ),
-        ),
+        )
       ],
-    );
-  }
+    ),
+  ),
+],
+);
+}
 }
